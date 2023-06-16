@@ -21,3 +21,36 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+$(function () {
+  // Add a listener for click events on the save button
+  $(".saveBtn").on("click", function () {
+    var timeBlockId = $(this).parent().attr("id"); // Get the id of the time-block
+    var userInput = $(this).siblings(".description").val(); // Get the user input from the textarea
+    localStorage.setItem(timeBlockId, userInput); // Save the user input in local storage
+  });
+
+  // Apply the past, present, or future class to each time block
+  var currentHour = dayjs().format("H"); // Get the current hour in 24-hour time
+  $(".time-block").each(function () {
+    var timeBlockHour = parseInt($(this).attr("id").split("-")[1]); // Get the hour from the time-block id
+    if (timeBlockHour < currentHour) {
+      $(this).removeClass("present future").addClass("past");
+    } else if (timeBlockHour === currentHour) {
+      $(this).removeClass("past future").addClass("present");
+    } else {
+      $(this).removeClass("past present").addClass("future");
+    }
+  });
+
+  // Get user input from localStorage and set the values of textarea elements
+  $(".time-block").each(function () {
+    var timeBlockId = $(this).attr("id");
+    var userInput = localStorage.getItem(timeBlockId);
+    $(this).find(".description").val(userInput);
+  });
+
+  // Display the current date in the header of the page
+  var currentDate = dayjs().format("MMMM DD, YYYY");
+  $("#currentDay").text(currentDate);
+});
