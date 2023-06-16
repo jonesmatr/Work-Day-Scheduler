@@ -17,11 +17,11 @@ $(function () {
 
     // Compare the time block time to the current time and apply the appropriate class
     if (timeBlockTime.isSame(currentTime, "hour")) {
-      $(this).removeClass("past future").addClass("present");
+      $(this).removeClass("past future").addClass("present");// If the time block time is the same as the current time, apply the present class
     } else if (timeBlockTime.isBefore(currentTime)) {
-      $(this).removeClass("present future").addClass("past");
+      $(this).removeClass("present future").addClass("past");// If the time block time is before the current time, apply the past class
     } else {
-      $(this).removeClass("past present").addClass("future");
+      $(this).removeClass("past present").addClass("future");// If the time block time is after the current time, apply the future class
     }
   });
 
