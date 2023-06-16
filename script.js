@@ -30,18 +30,25 @@ $(function () {
     localStorage.setItem(timeBlockId, userInput); // Save the user input in local storage
   });
 
-  // Apply the past, present, or future class to each time block
-  var currentHour = dayjs().format("H"); // Get the current hour in 24-hour time
+  // Apply the past, present, or future class to each time block.
+  var currentTime = dayjs(); // Get the current time
+
   $(".time-block").each(function () {
-    var timeBlockHour = parseInt($(this).attr("id").split("-")[1]); // Get the hour from the time-block id
-    if (timeBlockHour < currentHour) {
-      $(this).removeClass("present future").addClass("past");
-    } else if (timeBlockHour === currentHour) {
+    var timeBlockId = $(this).attr("id");
+    var timeBlockHour = parseInt(timeBlockId.split("-")[1]); // Extract the hour from the time-block id
+    var timeBlockTime = currentTime.set("hour", timeBlockHour).startOf("hour");
+  
+    if (timeBlockTime.isSame(currentTime, "hour")) {
       $(this).removeClass("past future").addClass("present");
+    } else if (timeBlockTime.isBefore(currentTime)) {
+      $(this).removeClass("present future").addClass("past");
     } else {
       $(this).removeClass("past present").addClass("future");
     }
   });
+  
+  
+
 
   // Get user input from localStorage and set the values of textarea elements
   $(".time-block").each(function () {
