@@ -15,6 +15,16 @@ The site can be accessed [here](https://jonesmatr.github.io/Work-Day-Scheduler/)
 ## Introduction
 The Work Day Scheduler is a web application that allows you to schedule and organize your work day. It provides a user-friendly interface where you can input and save tasks for different hours of the day. The time blocks are color-coded to indicate past, present, and future time slots. This helps you easily identify and manage your tasks throughout the day.
 
+## Installation
+
+To play the coding quiz challenge, follow these steps:
+
+1. Clone the repository to your local machine using the following command:
+```bash
+git clone https://github.com/jonesmatr/Work-Day-Scheduler
+``` 
+2. Open the `index.html` file in a web browser.
+
 ## Usage
 1. Open the Work Day Scheduler in your web browser.
 2. You will see time blocks representing different hours of the work day.
@@ -33,12 +43,4 @@ The following technologies are used in this project:
 - JavaScript (jQuery)
 - [Day.js](https://day.js.org/) (JavaScript library for date and time manipulation)
 
-## Setup
-To use the Work Day Scheduler, follow these steps:
-1. Clone this repository to your local machine or download the source code files.
-2. Open the `index.html` file in your web browser.
-3. You can now start scheduling and organizing your work day using the application.
-
 Note: Internet access is required as the application relies on external dependencies, such as Bootstrap, Font Awesome, and Day.js, which are loaded from CDNs.
-
-Feel free to modify and customize the code to suit your specific needs.
